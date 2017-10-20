@@ -1,0 +1,17 @@
+/**
+ * Responsive mixins
+ */
+
+/**
+ * Generate icon for retina displays
+ *
+ * @param {String} $name Icon file name
+ * @param {String} $extension (png) Icon file extension
+ * @param {String} $path (/assets/img/icons) Icon file path
+ */
+@mixin retina-icon($name, $extension: 'png', $path: '/assets/img/icons')
+  @media screen and (min-resolution: 1.25dppx)
+    background-image: url('#{$path}/#{$name}/#{$name}@2x.#{$extension}')
+
+  @media screen and (min-resolution: 2.25dppx)
+    background-image: url('#{$path}/#{$name}/#{$name}@3x.#{$extension}')

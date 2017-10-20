@@ -1,0 +1,46 @@
+/**
+ * Element mixins
+ */
+
+/**
+ * Generate cross
+ *
+ * @param {String} $width (18px) Width
+ * @param {String} $height ($width) Height
+ * @param {String} $background-color (#858585) Cross background
+ * @param {String} $cross-width (100%) Cross width
+ * @param {String} $cross-height (2px) Cross height
+ */
+@mixin generate-cross($width: 18px, $height: $width, $background-color: #858585, $cross-width: 100%, $cross-height: 2px)
+  display: block
+  position: absolute
+  width: $width
+  height: $height
+  top: 0
+  right: 0
+  cursor: pointer
+  opacity: .5
+  @include set-transition(opacity)
+
+  &::before,
+  &::after
+    content: ''
+    display: block
+    position: absolute
+    width: $cross-width
+    height: $cross-height
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    margin: auto
+    background-color: $background-color
+
+  &::before
+    transform: rotate(45deg)
+
+  &::after
+    transform: rotate(-45deg)
+
+  &:hover
+    opacity: 1

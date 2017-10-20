@@ -1,0 +1,38 @@
+.#{$vendor-prefix}#{$block-prefix}button
+  $_ : & // Root element
+
+  display: inline-flex
+  min-height: 40px
+  padding: 10px 15px
+  align-items: center
+  justify-content: center
+  font: inherit
+  border: none
+    radius: 2px
+  background-color: #0098cf
+  color: #fff
+  cursor: pointer
+  outline: none
+  line-height: 1.6
+  text-decoration: none
+  @include set-transition(background-color)
+
+  &:hover,
+  &:focus
+    background-color: #26b3e6
+
+  &:disabled
+    background-color: #cbcbcb
+
+  @at-root button#{&}
+    display: inline-block
+
+  // Elements
+  @import "__icon/button__icon"
+
+  // Modifiers
+  @import "_type/button_type_block"
+  @import "_theme/button_theme_shell"
+  @import "_theme/button_theme_ultimate"
+  @import "_theme/button_theme_action"
+  @import "_align/button_align_center"

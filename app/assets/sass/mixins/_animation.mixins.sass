@@ -1,0 +1,28 @@
+/**
+ * Animation mixins
+ */
+
+/**
+ * Generate transition
+ *
+ * @param {List} $properties CSS properties for animate
+ */
+@mixin set-transition($properties...)
+  $transitions : ()
+
+  @each $property in $properties
+    $transitions : append($transitions, $property $animation-duration $animation-timing-function, comma)
+
+  transition: $transitions
+
+/**
+ * Generate animation
+ *
+ * @param {String} $name Animation name
+ * @param {Number} $duration ($animation-duration) Animation duration
+ * @param {String} $timing-function ($timing-function) Animation timing function
+ * @param {String} $fill-mode (forwards) Animation fill mode
+ * @param {Number} $iteration-count (1) Animation iteration count
+ */
+@mixin set-animation($name, $duration: $animation-duration, $timing-function: $animation-timing-function, $fill-mode: forwards, $iteration-count: 1)
+  animation: $name $duration $timing-function $fill-mode $iteration-count

@@ -1,0 +1,20 @@
+&_theme_action
+  min-height: 0
+  padding: 5px 10px
+  border: solid 1px #009dd6
+    radius: 100px
+  font-size: 11px
+  color: #00749e
+  @include set-transition(color, background-color)
+
+  &,
+  &:focus
+    background-color: #fff
+
+  &:hover
+    background-color: #009dd6
+    color: #fff
+
+  #{$_}
+    &__icon
+      font-size: 20px

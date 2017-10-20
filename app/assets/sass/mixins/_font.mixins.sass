@@ -1,0 +1,18 @@
+/**
+ *  Font mixins
+ */
+
+/**
+ * Add custom font
+ *
+ * @param {String} $font-family Font name
+ * @param {String} $file-path Path to font without extension
+ * @param {Number} $font-weight Font weight
+ * @param {String} $font-style Font style
+ */
+@mixin font-face($font-family, $file-path, $font-weight: $font-weight-normal, $font-style: normal)
+  @font-face
+    font-family: $font-family
+    src: url($file-path + '.woff2') format('woff2'), url($file-path + '.woff') format('woff')
+    font-weight: $font-weight
+    font-style: $font-style
