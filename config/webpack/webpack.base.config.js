@@ -20,7 +20,6 @@ module.exports = function baseWebpackConfig() {
         'classnames',
         'lodash',
         'moment',
-        'perfect-scrollbar',
         'react',
         'react-dom',
         'react-modal',
@@ -29,7 +28,6 @@ module.exports = function baseWebpackConfig() {
         'redux',
         'redux-thunk',
         'normalize.css',
-        'perfect-scrollbar/css/perfect-scrollbar.css',
       ],
     },
     output: {

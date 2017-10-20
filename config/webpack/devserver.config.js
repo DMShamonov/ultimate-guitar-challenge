@@ -1,5 +1,3 @@
-const apiUrl = 'http://musicbrainz.org/ws/2';
-
 module.exports = {
   host: '0.0.0.0',
   compress: true,
@@ -12,11 +10,5 @@ module.exports = {
   stats: {
     chunks: false,
     colors: true,
-  },
-  proxy: {
-    '/api': {
-      target: apiUrl,
-      changeOrigin: true,
-    },
   },
 };

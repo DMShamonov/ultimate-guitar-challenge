@@ -1,7 +1,7 @@
 import ActionTypes from '../../actionTypes';
 
 /**
- * App modal controller
+ * Modal controller
  */
 class Modal {
   /**

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import autobind from 'autobind-decorator';
 import classnames from 'classnames';
 import _head from 'lodash/head';
-import _isEqual from 'lodash/isEqual';
 import _isFunction from 'lodash/isFunction';
 
 import connectToStore from 'decorators/connectToStore';
@@ -14,7 +13,7 @@ import ModalController from 'controllers/Modal';
   modal: _head(state.modals),
 }))
 @autobind
-class Modal extends Component {
+class Modal extends PureComponent {
   static defaultProps = {
     modal: {
       content: null,
@@ -29,13 +28,6 @@ class Modal extends Component {
     }),
     dispatch: PropTypes.func.isRequired,
   };
-
-  shouldComponentUpdate(nextProps) {
-    return (
-      !_isEqual(this.props.modal, nextProps.modal) ||
-      !_isEqual(this.props.locale, nextProps.locale)
-    );
-  }
 
   /**
    * Hide modal
