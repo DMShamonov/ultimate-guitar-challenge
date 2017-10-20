@@ -1,0 +1,6 @@
+# ignore configs
+webpack.config.js
+config/
+
+# ignore build files
+dist/
