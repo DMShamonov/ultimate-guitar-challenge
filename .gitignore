@@ -1,0 +1,8 @@
+# ignore ide indexes
+.idea/
+
+# ignore build files
+/dist/
+
+# ignore vendor packages
+/node_modules/
