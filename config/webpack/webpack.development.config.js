@@ -10,7 +10,6 @@ const DevServerConfig = require('./devserver.config');
 // Path
 const ROOT_PATH = path.join(path.resolve(__dirname), '/../..');
 const FONTS = path.join(ROOT_PATH, '/app/assets/fonts');
-const IMAGES = path.join(ROOT_PATH, '/app/assets/img');
 
 module.exports = function developmentWebpackConfig() {
   return webpackMerge(BaseWebpackConfig(), {
@@ -20,7 +19,6 @@ module.exports = function developmentWebpackConfig() {
       new webpack.NamedModulesPlugin(),
       new CopyWebpackPlugin([
         { from: FONTS, to: 'assets/fonts' },
-        { from: IMAGES, to: 'assets/img' },
       ]),
     ],
   });

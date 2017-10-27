@@ -19,7 +19,6 @@ module.exports = function baseWebpackConfig() {
         'axios',
         'classnames',
         'lodash',
-        'moment',
         'react',
         'react-dom',
         'react-modal',
@@ -97,10 +96,6 @@ module.exports = function baseWebpackConfig() {
     },
     plugins: [
       new ExtractTextPlugin('[name].[contenthash].css'),
-      new webpack.ContextReplacementPlugin(
-        /moment[\\/\\]locale/,
-        /(en-gb|ru)/,
-      ),
       new HtmlWebpackPlugin({
         chunks: ['vendor', 'app'],
         chunksSortMode: 'manual',
