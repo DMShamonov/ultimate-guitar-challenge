@@ -16,7 +16,7 @@ class ReleaseApi extends RestApi {
    * @return {Promise}
    */
   get(id) {
-    return this.sendGet(`${this._endpoint}/${id}`);
+    return this.sendGet(`${this._endpoint}/${id}`, { params: { fmt: 'json' } });
   }
 }
 

@@ -25,7 +25,7 @@ class RestApi {
     this._type = type;
 
     this._axios = axios.create(DataAdapter.merge({}, {
-      baseURL: `http://musicbrainz.org/ws/2${this._type}`,
+      baseURL: `/api/${this._type}`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -51,7 +51,7 @@ class RestApi {
    * @return {Promise}
    */
   sendGet(url, options = {}) {
-    return this._request(url, 'get', { ...options, params: { fmt: 'json' } });
+    return this._request(url, 'get', options);
   }
 
   /**
