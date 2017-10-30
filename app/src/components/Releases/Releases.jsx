@@ -7,8 +7,9 @@ import _filter from 'lodash/filter';
 
 import connectToStore from 'decorators/connectToStore';
 import LocalStorageController from 'controllers/LocalStorage';
-import Button from 'ui/Button';
+import { Page, PageTitle, PageContent } from 'ui/Page';
 import Search from 'ui/Search';
+import Button from 'ui/Button';
 import Modal from 'components/Modal';
 import ModalController from 'controllers/Modal';
 import AddReleaseModal from 'components/AddReleaseModal';
@@ -96,51 +97,49 @@ class Releases extends PureComponent {
     );
 
     return (
-      <div className="ug-b-app">
-        <div className="ug-b-app__container">
-          <h1>Releases</h1>
-          <Search
-            fluid
-            value={search}
-            placeholder="For searching type id or title release where..."
-            onChange={this._onChangeSearchString}
-          />
-          <div className="ug-b-app__content">
-            {
-              !_isEmpty(filteredReleases) ?
-                <table>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Title</th>
-                      <th>Status</th>
-                      <th>Date</th>
-                      <th />
+      <Page>
+        <PageTitle>Releases</PageTitle>
+        <Search
+          fluid
+          value={search}
+          placeholder="For searching type id or title release where..."
+          onChange={this._onChangeSearchString}
+        />
+        <PageContent>
+          {
+            !_isEmpty(filteredReleases) ?
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th />
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                  _map(filteredReleases, (release, index) => (
+                    <tr key={index}>
+                      <td>{release.id}</td>
+                      <td>{release.title}</td>
+                      <td>{release.status}</td>
+                      <td>{release.data}</td>
+                      <td>
+                        <Button onClick={() => this._removeRelease(release.id)}>Remove</Button>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      _map(filteredReleases, (release, index) => (
-                        <tr key={index}>
-                          <td>{release.id}</td>
-                          <td>{release.title}</td>
-                          <td>{release.status}</td>
-                          <td>{release.data}</td>
-                          <td>
-                            <Button onClick={() => this._removeRelease(release.id)}>Remove</Button>
-                          </td>
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </table> :
-                <p>Not have yet</p>
-            }
-          </div>
+                  ))
+                }
+                </tbody>
+              </table> :
+              <p>Not have yet</p>
+          }
           <Button onClick={this._showAddReleaseModal}>Add release</Button>
-        </div>
+        </PageContent>
         <Modal {...{ dispatch }} />
-      </div>
+      </Page>
     );
   }
 }
