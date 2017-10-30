@@ -19,7 +19,7 @@ import ReleaseController from 'controllers/Release';
   releases: state.releases,
 }))
 @autobind
-class Releases extends PureComponent {
+class ReleasesPage extends PureComponent {
   static defaultProps = {
     releases: {},
   };
@@ -144,5 +144,5 @@ class Releases extends PureComponent {
   }
 }
 
-export default Releases;
+export default ReleasesPage;
 
