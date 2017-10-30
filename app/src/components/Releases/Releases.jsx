@@ -8,7 +8,7 @@ import _filter from 'lodash/filter';
 import connectToStore from 'decorators/connectToStore';
 import LocalStorageController from 'controllers/LocalStorage';
 import Button from 'ui/Button';
-import Input from 'ui/Input';
+import Search from 'ui/Search';
 import Modal from 'components/Modal';
 import ModalController from 'controllers/Modal';
 import AddReleaseModal from 'components/AddReleaseModal';
@@ -51,6 +51,16 @@ class Releases extends PureComponent {
   }
 
   /**
+   * On search string change action
+   *
+   * @param {Event} e
+   * @private
+   */
+  _onChangeSearchString(e) {
+    this.setState({ search: e.target.value });
+  }
+
+  /**
    * Show add release modal form
    *
    * @private
@@ -89,11 +99,11 @@ class Releases extends PureComponent {
       <div className="ug-b-app">
         <div className="ug-b-app__container">
           <h1>Releases</h1>
-          <Input
+          <Search
             fluid
             value={search}
             placeholder="For searching type id or title release where..."
-            onChange={e => this.setState({ search: e.target.value })}
+            onChange={this._onChangeSearchString}
           />
           <div className="ug-b-app__content">
             {
