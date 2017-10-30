@@ -1,19 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import _map from 'lodash/map';
-import _isEmpty from 'lodash/isEmpty';
 import _filter from 'lodash/filter';
 
 import connectToStore from 'decorators/connectToStore';
 import LocalStorageController from 'controllers/LocalStorage';
 import { Page, PageTitle, PageContent } from 'ui/Page';
 import Search from 'ui/Search';
+import Releases from 'components/Releases';
 import Button from 'ui/Button';
 import Modal from 'components/Modal';
 import ModalController from 'controllers/Modal';
 import AddReleaseModal from 'components/AddReleaseModal';
-import ReleaseController from 'controllers/Release';
 
 @connectToStore(state => ({
   releases: state.releases,
@@ -75,18 +73,6 @@ class ReleasesPage extends PureComponent {
     })(dispatch);
   }
 
-  /**
-   * Handle on remove release
-   *
-   * @param {String} id
-   * @private
-   */
-  _removeRelease(id) {
-    const { dispatch } = this.props;
-
-    ReleaseController.remove(id)(dispatch);
-  }
-
   render() {
     const { search } = this.state;
     const { releases, dispatch } = this.props;
@@ -106,36 +92,7 @@ class ReleasesPage extends PureComponent {
           onChange={this._onChangeSearchString}
         />
         <PageContent>
-          {
-            !_isEmpty(filteredReleases) ?
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th />
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                  _map(filteredReleases, (release, index) => (
-                    <tr key={index}>
-                      <td>{release.id}</td>
-                      <td>{release.title}</td>
-                      <td>{release.status}</td>
-                      <td>{release.data}</td>
-                      <td>
-                        <Button onClick={() => this._removeRelease(release.id)}>Remove</Button>
-                      </td>
-                    </tr>
-                  ))
-                }
-                </tbody>
-              </table> :
-              <p>Not have yet</p>
-          }
+          <Releases items={filteredReleases} dispatch={dispatch} />
           <Button onClick={this._showAddReleaseModal}>Add release</Button>
         </PageContent>
         <Modal {...{ dispatch }} />
