@@ -10,7 +10,10 @@ import Release from './Release';
 @autobind
 class Releases extends PureComponent {
   static propTypes = {
-    items: PropTypes.objectOf(PropTypes.object).isRequired,
+    items: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.object),
+      PropTypes.objectOf(PropTypes.object),
+    ]).isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 

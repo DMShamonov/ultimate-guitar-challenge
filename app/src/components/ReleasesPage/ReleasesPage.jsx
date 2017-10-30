@@ -4,7 +4,6 @@ import autobind from 'autobind-decorator';
 import _filter from 'lodash/filter';
 
 import connectToStore from 'decorators/connectToStore';
-import LocalStorageController from 'controllers/LocalStorage';
 import { Page, PageTitle, PageContent } from 'ui/Page';
 import Search from 'ui/Search';
 import Releases from 'components/Releases';
@@ -33,20 +32,6 @@ class ReleasesPage extends PureComponent {
     this.state = {
       search: '',
     };
-  }
-
-  componentDidMount() {
-    window.addEventListener('beforeunload', this._saveReleasesInLocalStorage, false);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this._saveReleasesInLocalStorage, false);
-  }
-
-  _saveReleasesInLocalStorage() {
-    const { releases } = this.props;
-
-    new LocalStorageController().setItem('releases', JSON.stringify(releases));
   }
 
   /**

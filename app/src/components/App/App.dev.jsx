@@ -7,8 +7,8 @@ import LocalStorageController from 'controllers/LocalStorage';
 import configureStore from 'store';
 import DevTools from 'components/DevTools';
 
-const releases = new LocalStorageController().getItem('releases') || undefined;
-const store = configureStore({ releases: releases && JSON.parse(releases) });
+const initialState = new LocalStorageController().getItem('state') || undefined;
+const store = configureStore(JSON.parse(initialState));
 
 const AppComponent = () => (
   <BrowserRouter>
