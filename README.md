@@ -1,4 +1,4 @@
-# ultimate-guitar-test-job
-Test job by ultimate guitar company.
+# ultimate-guitar-challenge
+The [ultimate-guitar](https://www.ultimate-guitar.com/) challenge job.
 
-React app for loading and save [MusicBrainz releases](https://musicbrainz.org/doc/Development/JSON_Web_Service#Release) in local storage.
+React/Redux SPA for load and save [MusicBrainz releases](https://musicbrainz.org/doc/Development/JSON_Web_Service#Release) in `localStorage`.
