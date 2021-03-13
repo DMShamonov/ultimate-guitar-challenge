@@ -5,18 +5,26 @@ import _filter from 'lodash/filter';
 
 import connectToStore from 'decorators/connectToStore';
 import { Page, PageTitle, PageContent } from 'ui/Page';
-import Search from 'ui/Search';
+import Input from 'ui/Input';
 import Releases from 'components/Releases';
 import Button from 'ui/Button';
 import Modal from 'components/Modal';
 import ModalController from 'controllers/Modal';
 import AddReleaseModal from 'components/AddReleaseModal';
+import {
+  ReleasesPagePropsType,
+  ReleasesPageStateType,
+} from './ReleasesPage.types';
 
-@connectToStore((state) => ({
+// @ts-ignore
+@connectToStore((state: Pick<ReleasesPagePropsType, 'releases'>) => ({
   releases: state.releases,
 }))
 @autobind
-class ReleasesPage extends PureComponent {
+class ReleasesPage extends PureComponent<
+  ReleasesPagePropsType,
+  ReleasesPageStateType
+> {
   static defaultProps = {
     releases: {},
   };
@@ -26,7 +34,7 @@ class ReleasesPage extends PureComponent {
     dispatch: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
+  constructor(props: ReleasesPagePropsType) {
     super(props);
 
     this.state = {
@@ -40,7 +48,7 @@ class ReleasesPage extends PureComponent {
    * @param {Event} e
    * @private
    */
-  _onChangeSearchString(e) {
+  _onChangeSearchString(e: any) {
     this.setState({ search: e.target.value });
   }
 
@@ -72,7 +80,7 @@ class ReleasesPage extends PureComponent {
     return (
       <Page>
         <PageTitle>Releases</PageTitle>
-        <Search
+        <Input
           fluid
           value={search}
           placeholder="For searching type id or title release where..."

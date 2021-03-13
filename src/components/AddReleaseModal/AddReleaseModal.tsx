@@ -11,11 +11,12 @@ import ReleaseApi from 'controllers/api/ReleaseApi';
 import ReleaseController from 'controllers/Release';
 import Modal from 'controllers/Modal';
 
+// @ts-ignore
 @connectToStore((state) => ({
   releases: state.releases,
 }))
 @autobind
-class AddReleaseModal extends PureComponent {
+class AddReleaseModal extends PureComponent<any, any> {
   static defaultProps = {
     releases: {},
   };
@@ -25,7 +26,7 @@ class AddReleaseModal extends PureComponent {
     dispatch: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -35,7 +36,7 @@ class AddReleaseModal extends PureComponent {
     };
   }
 
-  _handleOnSubmit(e) {
+  _handleOnSubmit(e: any) {
     e.preventDefault();
 
     this._setProcessing();
@@ -60,7 +61,7 @@ class AddReleaseModal extends PureComponent {
     this.setState({ processing: true, error: false });
   }
 
-  _setErrors(error) {
+  _setErrors(error: any) {
     this.setState({ error, processing: false });
   }
 

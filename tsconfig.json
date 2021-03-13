@@ -20,6 +20,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es5",
+    "experimentalDecorators": true
   },
   "include": [
     "src"

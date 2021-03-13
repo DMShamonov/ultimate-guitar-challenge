@@ -13,19 +13,19 @@ const store = configureStore(initialState ? JSON.parse(initialState) : {}, {
   exclude: ['modals'],
 });
 
-const AppComponent = () => (
-  <BrowserRouter>
-    <Provider store={store}>
-      {process.env.NODE_ENV === 'production' ? (
-        <AppRouter />
-      ) : (
-        <div style={{ width: '100%', height: '100%' }}>
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        {process.env.NODE_ENV === 'production' ? (
           <AppRouter />
-          <DevTools />
-        </div>
-      )}
-    </Provider>
-  </BrowserRouter>
-);
-
-export default AppComponent;
+        ) : (
+          <div style={{ width: '100%', height: '100%' }}>
+            <AppRouter />
+            <DevTools />
+          </div>
+        )}
+      </Provider>
+    </BrowserRouter>
+  );
+}
